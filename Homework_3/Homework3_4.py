@@ -8,8 +8,5 @@ comparison_2 = second_number >= 0
 comparison_3 = third_number >= 0
 positive_number = comparison_1 + comparison_2 + comparison_3
 negative_number = 3 - positive_number
-# print(comparison_1)
-# print(comparison_2)
-# print(comparison_3)
 print('Quantity of positive numbers is ' + str(positive_number))
 print('Quantity of negative numbers is ' + str(negative_number))
