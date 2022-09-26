@@ -6,3 +6,32 @@
 #         some_list.append(i**2)
 # print(some_list)
 
+# Спрашивать у пользователя данные с клавиатуры, пока он не введет число
+# input_data = input()
+# while not input_data.isdigit():
+#     input_data = input()
+
+# В строке определить количество не пересекающихся пар одинаковых символов рядом стоящих: Hello
+# text = input()
+# number = 0
+# for i in range(len(text)-1):
+#     if text[i] == text[i+1]:
+#         number +=1
+# print(number)
+# text = input()
+# number = 0
+# i = 0
+# while i < len(text) - 1:
+#     if text[i] == text[i+1]:
+#         number += 1
+#         i += 1
+#     i += 1
+# print(number)
+
+# Дано целое положительное число N, вывести максимальную степень числа 2, в котором 2 не превышает
+# N=34, 2^5=32, 32<=34 ответ 5
+number = int(input())
+n = 0
+while 2**n <= number:
+    n += 1
+print(n-1)
