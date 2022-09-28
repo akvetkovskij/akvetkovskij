@@ -4,14 +4,24 @@ splitter = int(input('Enter splitter: '))
 k_number = int(input('Enter minimal number: '))
 number = 0
 numbers = 0
+# Первый (неправильный) вариант выполнения задания
 # for i in range(k_number, k_number*splitter**counter):
 #     if not i % splitter and number < counter:
 #         print(i)
 #         number += 1
-while number < counter:
+# Второй (правильный) вариант, который можно немного упростить
+# while number < counter:
+#     if numbers > k_number and not numbers % splitter:
+#         print(numbers)
+#         numbers += splitter
+#         number += 1
+#     else:
+#         numbers += 1
+# Третий (правильный) вариант, после упрощения второго
+while counter > 0:
     if numbers > k_number and not numbers % splitter:
         print(numbers)
         numbers += splitter
-        number += 1
+        counter -= 1
     else:
         numbers += 1
