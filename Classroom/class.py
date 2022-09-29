@@ -40,4 +40,21 @@
 
 # ЗАНЯТИЕ 6
 
-#
+# Вводится многозначное число, использую map и lambda, сформировать список цифр введенного числа
+# чтобы все цифры в получившемся списке были по типу int
+# number = input()
+# number = list(map(lambda x: int(x), number))
+
+# Вводится текст из нескольких предложений, каждое предложение разбито "."
+# сказать сколько слов в каждом предложении
+# text = input()
+# text = text.split('. ')
+# word_count = list(map(lambda x: x.count(' ') + 1, text ))
+# print(word_count)
+
+# Вводится строка, содержащая все, что угодно, необходимо просуммировать цифры из этой строки
+text = input()
+numbers = list(filter(lambda x: x.isdigit(), text))
+numbers = list(map(lambda x: int(x), numbers))
+numbers = sum(numbers)
+print(numbers)
