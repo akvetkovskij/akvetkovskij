@@ -53,8 +53,12 @@
 # print(word_count)
 
 # Вводится строка, содержащая все, что угодно, необходимо просуммировать цифры из этой строки
-text = input()
-numbers = list(filter(lambda x: x.isdigit(), text))
-numbers = list(map(lambda x: int(x), numbers))
-numbers = sum(numbers)
-print(numbers)
+# text = input()
+# numbers = list(filter(lambda x: x.isdigit(), text))
+# numbers = list(map(lambda x: int(x), numbers))
+# numbers = sum(numbers)
+# print(numbers)
+
+# Вводится число, суммировать цифры до тех пор, пока не получится однозначное чосло
+# прим: 856 -> 19 -> 1
+ def
