@@ -3,8 +3,8 @@
 numbers = list(input('Enter your list: '))
 list_of_numbers = []
 for i in numbers:
-    if i.isdigit():
-        list_of_numbers.append(i)
+    # if i.isdigit():
+    list_of_numbers.append(int(i))
 number = int(input('Enter your number shift: ')) + 1
 result_list = ()
 result_list = list_of_numbers[number:] + list_of_numbers[0:number]
