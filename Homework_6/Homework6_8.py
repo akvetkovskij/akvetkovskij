@@ -13,4 +13,4 @@ def search(city):
 
 
 result = search(input('Enter your city: '))
-print(f'Your city in the {result} contry')
+print(f'Your city in the {result}')
