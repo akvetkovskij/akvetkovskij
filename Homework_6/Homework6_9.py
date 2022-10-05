@@ -35,12 +35,12 @@ users_dikt = {
 temperary_dict = {}
 
 
-def second_dict() -> dict:
+def second_dict():
     for i in users_dikt.items():
         yield i
 
 
-def theard_dict() -> list:
+def theard_dict():
     yield from second_dict()
 
 
