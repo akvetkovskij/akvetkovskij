@@ -27,3 +27,22 @@ users_dikt = {
             'email': ''
     }
 }
+# for i in users_dikt.keys():
+#     for j in users_dikt.keys(i):
+#         if users_dikt.get(i)(j) is None:
+#             print(users_dikt.get(i)[j]['name'])
+# print(users_dikt['user_1']['name'])
+temperary_dict = {}
+
+
+def second_dict() -> dict:
+    for i in users_dikt.items():
+        yield i
+
+
+def theard_dict() -> list:
+    yield from second_dict()
+
+
+for i in theard_dict():
+    print(i)
