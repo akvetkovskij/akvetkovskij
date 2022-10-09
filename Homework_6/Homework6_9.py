@@ -32,17 +32,20 @@ users_dikt = {
 #         if users_dikt.get(i)(j) is None:
 #             print(users_dikt.get(i)[j]['name'])
 # print(users_dikt['user_1']['name'])
-temperary_dict = {}
+# temperary_dict = {}
 
 
-def second_dict():
-    for i in users_dikt.items():
-        yield i
-
-
-def theard_dict():
-    yield from second_dict()
-
-
-for i in theard_dict():
-    print(i)
+# def second_dict():
+#     for i in users_dikt.items():
+#         yield i
+#
+#
+# def theard_dict():
+#     yield from second_dict()
+#
+#
+# for i in theard_dict():
+#     print(i)
+for i in users_dikt.values():
+    if not i.get('email'):
+        print(i['name'])
