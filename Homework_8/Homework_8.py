@@ -24,3 +24,4 @@ class Time:
     def reserve_time(self):
         pass
 
+Time.get_timeline()
