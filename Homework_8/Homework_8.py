@@ -2,8 +2,8 @@ from datetime import datetime, timedelta
 
 
 class Time:
-    # start_time: str
-    end_time: str
+    start_time: str
+    # end_time: str
     # delta: str
 
     def __init__(self, start_time):  # end_time
@@ -26,4 +26,4 @@ class Time:
         pass
 
 
-Time.get_timeline("17.10.2022 10:00")
+Time("17.10.2022 10:00")
