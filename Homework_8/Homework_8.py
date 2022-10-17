@@ -11,7 +11,7 @@ class Time:
         # self.end_time = end_time
         self.delta = timedelta(minutes=30)
 
-    def get_timeline(self):
+    def get_timeline(self, start_time):
         timeline = []
         graph = 0
         start_time = datetime.strptime(self.start_time, "%d.%m.%Y %H:%M")
@@ -26,4 +26,4 @@ class Time:
         pass
 
 
-Time("17.10.2022 10:00")
+Time.get_timeline("17.10.2022 10:00")
