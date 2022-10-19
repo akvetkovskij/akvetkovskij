@@ -50,6 +50,3 @@ class OrderItem(Base):
     id = Column(Integer, primary_key=True)
     order_id = Column(Integer, ForeignKey('orders.id', ondelete='CASCADE'), nullable=False)
     product_id = Column(Integer, ForeignKey('products.id', ondelete='CASCADE'), nullable=False)
-
-
-Base.metadata.create_all()  # Создание таблицы
