@@ -25,3 +25,10 @@ CREATE TABLE IF NOT EXISTS orders(
     status_id INTEGER NOT NULL,
     FOREIGN KEY (status_id) REFERENCES statuses(id) ON DELETE CASCADE
     );
+CREATE TABLE IF NOT EXISTS order_items(
+    id SERIAL PRIMARY KEY,
+    order_id INTEGER NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    product_id INTEGER NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+    );
