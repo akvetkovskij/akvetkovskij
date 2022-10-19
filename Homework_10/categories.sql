@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS categories(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(24) NOT NULL UNIQUE
+    );
+CREATE TABLE IF NOT EXISTS products(
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(36) NOT NULL,
+    descr VARCHAR(140),
+    category_id INTEGER NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+    );
+CREATE TABLE IF NOT EXISTS users(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(24) NOT NULL,
+    email VARCHAR(24) NOT NULL UNIQUE
+    );
+CREATE TABLE IF NOT EXISTS statuses(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(10) NOT NULL UNIQUE
+    );
+CREATE TABLE IF NOT EXISTS orders(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    status_id INTEGER NOT NULL,
+    FOREIGN KEY (status_id) REFERENCES statuses(id) ON DELETE CASCADE
+    );
