@@ -11,36 +11,50 @@ engine = create_engine(DATABASE_URL)  # переменная подключен�
 Session = sessionmaker(bind=engine)  # связь сесии с engine
 
 
-def add_category(category: Category) -> Optional[Category]:
+def create_session(func):
+    """
+    Decorator for any function
+    :param func: function
+    :return: function before decorator with open session
+    """
+    def wrapper(**kwargs):
+        with Session() as sesion:
+            return func(**kwargs, sesion=sesion)
+    return wrapper
+
+
+@create_session
+def add_category(category: Category, session=None) -> Optional[Category]:
     """
     For adding some information in database
+    :param session: it is decorator
     :param category: name
     :return: Category
     """
-    with Session() as session:
-        session.add(category)
-        try:
-            session.commit()
-        except IntegrityError:
-            return None
-        else:
-            session.refresh(category)
-            return category
+    session.add(category)
+    try:
+        session.commit()
+    except IntegrityError:
+        return None
+    else:
+        session.refresh(category)
+        return category
 
 
-def get_category(category_id: int) -> Optional[Category]:
+@create_session
+def get_category(category_id: int, session=None) -> Optional[Category]:
     """
     For getting information about category with id
+    :param session: it is decorator
     :param category_id: id
     :return: Category
     """
-    with Session() as session:
-        category = session.execute(
-            select(Category).where(Category.id == category_id)
-        )
-        category = category.first()
-        if category:
-            return category[0]
+    category = session.execute(
+        select(Category).where(Category.id == category_id)
+    )
+    category = category.first()
+    if category:
+        return category[0]
 
 
 def all_categories() -> List[Category]:
@@ -53,6 +67,11 @@ def all_categories() -> List[Category]:
 
 
 def update_category(category: Category) -> bool:
+    """
+    This function for update information in table 'Category'
+    :param category: Catgory.id???
+    :return: Categoru.id before update
+    """
     category = category.__dict__
     del category['_sa_instance_state']
     with Session() as session:
@@ -71,10 +90,16 @@ def update_category(category: Category) -> bool:
         return True
 
 
-def delete_category(category_id: int) -> None:
-    with Session() as session:
-        session.execute(
-            delete(Category)
-            .where(Category.id == category_id)
-        )
-        session.commit()
+@create_session
+def delete_category(category_id: int, session=None) -> None:
+    """
+    For deleting Category
+    :param session: it is decorator
+    :param category_id: id category for delete
+    :return: Nothing
+    """
+    session.execute(
+        delete(Category)
+        .where(Category.id == category_id)
+    )
+    session.commit()
