@@ -18,8 +18,8 @@ def create_session(func):
     :return: function before decorator with open session
     """
     def wrapper(**kwargs):
-        with Session() as sesion:
-            return func(**kwargs, sesion=sesion)
+        with Session() as session:
+            return func(**kwargs, sesion=session)
     return wrapper
 
 
