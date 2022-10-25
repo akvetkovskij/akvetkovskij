@@ -19,7 +19,7 @@ def create_session(func):
     """
     def wrapper(**kwargs):
         with Session() as session:
-            return func(**kwargs, sesion=session)
+            return func(**kwargs, session=session)
     return wrapper
 
 
@@ -107,3 +107,9 @@ class CRUDCategory(object):
             .where(Category.id == category_id)
         )
         session.commit()
+
+
+new = Category(
+    name='Food'
+)
+CRUDCategory.add(category=new)
