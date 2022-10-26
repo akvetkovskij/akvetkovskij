@@ -110,6 +110,7 @@ class CRUDCategory(object):
 
 
 new = Category(
-    name='Food'
+    name='Drink'
 )
 CRUDCategory.add(category=new)
+# CRUDCategory.delete(category_id=2)
