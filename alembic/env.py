@@ -1,12 +1,12 @@
+from Homework_10.settings import DATABASE_URL
+from Homework_10.models import Base
+
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-
-from Homework_10.settings import DATABASE_URL
-from Homework_10.models import Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
