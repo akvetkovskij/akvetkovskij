@@ -10,6 +10,7 @@ class Category(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(VARCHAR(24), nullable=False, unique=True)    # nullable=False - не может быть пустым, если True - то может
+    descr = Column(VARCHAR(140))
 
 
 class Product(Base):
