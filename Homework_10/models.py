@@ -1,6 +1,11 @@
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, VARCHAR, ForeignKey
 
+from sqlalchemy import create_engine, select, update, delete  # create_engine для создания переменной подключения к БД
+from sqlalchemy.orm import sessionmaker
+
+from settings import DATABASE_URL  # импорт ссылки подключения к БД
+
 
 Base = declarative_base()
 
@@ -51,3 +56,19 @@ class OrderItem(Base):
     id = Column(Integer, primary_key=True)
     order_id = Column(Integer, ForeignKey('orders.id', ondelete='CASCADE'), nullable=False)
     product_id = Column(Integer, ForeignKey('products.id', ondelete='CASCADE'), nullable=False)
+
+
+engine = create_engine(DATABASE_URL)  # переменная подключения к БД
+Session = sessionmaker(bind=engine)  # связь сесии с engine
+
+
+def create_session(func):
+    """
+    Decorator for any function
+    :param func: function
+    :return: function before decorator with open session
+    """
+    def wrapper(**kwargs):
+        with Session() as session:
+            return func(**kwargs, session=session)
+    return wrapper
