@@ -92,4 +92,4 @@ class CRUDCategory(object):
         session.commit()
 
 
-CRUDCategory.delete(category_id=1)
+# CRUDCategory.delete(category_id=1)
