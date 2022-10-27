@@ -1,6 +1,6 @@
 from .category import CRUDCategory
 
 
-__all__  = [
+__all__ = [
     'CRUDCategory',
 ]
