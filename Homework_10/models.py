@@ -3,7 +3,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy import Column, Integer, VARCHAR, ForeignKey
 from sqlalchemy import create_engine  # create_engine для создания переменной подключения к БД
 
-from settings import DATABASE_URL  # импорт ссылки подключения к БД
+from Homework_10.settings import DATABASE_URL  # импорт ссылки подключения к БД
 
 
 Base = declarative_base()
@@ -47,6 +47,7 @@ class Order(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
     status_id = Column(Integer, ForeignKey('statuses.id', ondelete='CASCADE'), nullable=False)
+    descr = Column(VARCHAR(140), nullable=True)
 
 
 class OrderItem(Base):

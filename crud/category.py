@@ -90,3 +90,6 @@ class CRUDCategory(object):
             .where(Category.id == category_id)
         )
         session.commit()
+
+
+CRUDCategory.delete(category_id=1)
