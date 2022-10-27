@@ -1,8 +1,7 @@
-from sqlalchemy.orm import declarative_base
-from sqlalchemy import Column, Integer, VARCHAR, ForeignKey
+from sqlalchemy.orm import declarative_base, sessionmaker
 
-from sqlalchemy import create_engine, select, update, delete  # create_engine для создания переменной подключения к БД
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import Column, Integer, VARCHAR, ForeignKey
+from sqlalchemy import create_engine  # create_engine для создания переменной подключения к БД
 
 from settings import DATABASE_URL  # импорт ссылки подключения к БД
 
