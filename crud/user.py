@@ -54,7 +54,7 @@ class CRUDUser(object):
         )
         try:
             session.commit()
-        except IntegrityError
+        except IntegrityError:
             return False
         else:
             return True
