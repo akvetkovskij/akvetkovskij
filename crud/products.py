@@ -59,3 +59,11 @@ class CRUDProduct(object):
         else:
             return True
 
+    @staticmethod
+    @create_session
+    def delete(product_id: int, session=None) -> None:
+        session.execute(
+            delete(Product)
+            .where(Product.id == product_id)
+        )
+        session.commite()
