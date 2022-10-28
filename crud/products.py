@@ -67,3 +67,14 @@ class CRUDProduct(object):
             .where(Product.id == product_id)
         )
         session.commite()
+
+
+# new = Product(
+#     title='Sweets',
+#     descr='Tasty',
+#     category_id=2
+# )
+# print(CRUDProduct.add(product=new))
+# all_in_product = CRUDProduct.all()
+# for product in CRUDProduct.all():
+#     print(product.title)
