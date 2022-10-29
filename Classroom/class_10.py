@@ -1,5 +1,6 @@
 from csv import DictReader
 from typing import List
+from crud.category import CRUDCategory
 
 
 def from_categories() -> List[dict]:
@@ -11,4 +12,11 @@ def from_categories() -> List[dict]:
         return new_dict
 
 
-print(from_categories())
+for i in from_categories():
+    for key, value in i.items():
+        CRUDCategory(
+            key=value
+        )
+        print(key, value)
+        # print(i)
+# print(from_categories())
