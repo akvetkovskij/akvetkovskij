@@ -6,7 +6,12 @@ def get_response():
         response = session.get(
             url='https://www.wildberries.by/webapi/menu/main-menu-by-ru.json'
         )
-        print(response.json())
+        return response.json()
+        # print(response.json())
 
 
-print(get_response())
+# result = get_response()
+# for _ in result:
+#     if 'seo' in _:
+#         print(_)
+# print(type(get_response()))
