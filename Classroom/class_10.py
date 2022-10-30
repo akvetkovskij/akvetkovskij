@@ -12,11 +12,12 @@ def from_categories() -> List[dict]:
         return new_dict
 
 
-for i in from_categories():
-    for key, value in i.items():
-        CRUDCategory(
-            key=value
-        )
-        print(key, value)
+print(from_categories())
+# for i in from_categories():
+#     for key, value in i.items():
+        # CRUDCategory(
+        #     key=value
+        # )
+        # print(key, value)
         # print(i)
 # print(from_categories())
