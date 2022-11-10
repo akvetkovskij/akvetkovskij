@@ -1,13 +1,16 @@
 from requests import Session
+from http import HTTPStatus
+
+from aiohttp import ClientSession
 
 
-def get_response():
-    with Session() as session:
-        response = session.get(
-            url='https://www.wildberries.by/webapi/menu/main-menu-by-ru.json'
+async def get_response() -> list | None:
+    async with ClientSession(base_url='https://www.wildberries.by') as session:
+        response = await session.get(
+            url='/webapi/menu/main-menu-by-ru.json'
         )
-        return response.json()
-        # print(response.json())
+        if response.status == HTTPStatus.OK:
+            return await response.json()
 
 
 # result = get_response()

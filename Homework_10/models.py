@@ -2,9 +2,10 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 from sqlalchemy import Column, Integer, VARCHAR, ForeignKey
 from sqlalchemy import create_engine  # create_engine для создания переменной подключения к БД
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 
-from Homework_10.settings import DATABASE_URL  # импорт ссылки подключения к БД
-
+# from Homework_10.settings import DATABASE_URL  # импорт ссылки подключения к БД
+from Homework_10.settings import DATABASE_ASYNC_URL # импорт асинхронной ссылки подключения к БД
 
 Base = declarative_base()
 
@@ -58,7 +59,7 @@ class OrderItem(Base):
     product_id = Column(Integer, ForeignKey('products.id', ondelete='CASCADE'), nullable=False)
 
 
-engine = create_engine(DATABASE_URL)  # переменная подключения к БД
+engine = create_async_engine(DATABASE_ASYNC_URL)  # переменная подключения к БД
 Session = sessionmaker(bind=engine)  # связь сесии с engine
 
 
@@ -68,7 +69,7 @@ def create_session(func):
     :param func: function
     :return: function before decorator with open session
     """
-    def wrapper(**kwargs):
-        with Session() as session:
-            return func(**kwargs, session=session)
+    async def wrapper(**kwargs):
+        async with AsyncSession(bind=engine) as session:
+            return await func(**kwargs, session=session)
     return wrapper
