@@ -60,12 +60,13 @@ class OrderItem(Base):
 
 
 engine = create_async_engine(DATABASE_ASYNC_URL)  # переменная подключения к БД
+# engine = create_engine(DATABASE_URL) # синхронное подключение к БД
 Session = sessionmaker(bind=engine)  # связь сесии с engine
 
 
-def create_session(func):
+def create_async_session(func):
     """
-    Decorator for any function
+    Assync decorator for any function
     :param func: function
     :return: function before decorator with open session
     """
@@ -73,3 +74,11 @@ def create_session(func):
         async with AsyncSession(bind=engine) as session:
             return await func(**kwargs, session=session)
     return wrapper
+
+
+# def create_session(func):
+#     """synchronous decorator"""
+#     def wrapper(**kwargs):
+#         with Session() as session:
+#             return func(**kwargs, session=session)
+#     return wrapper
